@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["baa2"],{"7idR":function(n,t,a){"use strict";a.r(t);var e=a("q1tI"),i=a.n(e);t.default=function(){return i.a.createElement("div",null,"Logs")}},qqlO:function(n,t,a){(window.__NEXT_P=window.__NEXT_P||[]).push(["/setting/account/logs",function(){var n=a("7idR");return{page:n.default||n}}])}},[["qqlO","5d41","9da1"]]]);

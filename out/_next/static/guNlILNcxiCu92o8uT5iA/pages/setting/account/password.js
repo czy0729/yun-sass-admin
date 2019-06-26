@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["0861"],{DFbe:function(n,t,e){"use strict";e.r(t);var a=e("q1tI"),o=e.n(a);t.default=function(){return o.a.createElement("div",null,"Password")}},"VP++":function(n,t,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/setting/account/password",function(){var n=e("DFbe");return{page:n.default||n}}])}},[["VP++","5d41","9da1"]]]);

@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2019-06-25 15:44:16
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 20:07:42
+ * @Last Modified time: 2019-06-26 20:12:05
  */
 import React from 'react'
 import NextApp, { Container } from 'next/app'
@@ -97,7 +97,7 @@ export default class App extends NextApp {
         <div className={styles.logo}>
           <img
             className={styles.logoImg}
-            src='/static/images/logo.png'
+            src={`${linkPrefix}/static/images/logo.png`}
             alt=''
             onClick={() => this.push('/')}
           />
@@ -124,7 +124,7 @@ export default class App extends NextApp {
       .split('/')
       .filter(item => !!item)
       .forEach(item => {
-        current += `/${item}`
+        current += `${linkPrefix}/${item}`
         const find = (sub || config).find(item => item.key === current)
         if (find) {
           data.push(find)
