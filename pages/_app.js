@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2019-06-25 15:44:16
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 20:02:45
+ * @Last Modified time: 2019-06-26 20:07:42
  */
 import React from 'react'
 import NextApp, { Container } from 'next/app'
@@ -56,7 +56,7 @@ const config = [
   }
 ]
 const siderWidth = 112
-const dev = process.env.NODE_ENV === 'production'
+const __server__ = typeof window === 'undefined'
 
 export default class App extends NextApp {
   componentDidCatch() {}
@@ -91,11 +91,6 @@ export default class App extends NextApp {
   }
 
   renderMenu() {
-    // @todo
-    if (dev) {
-      return null
-    }
-
     const { router } = this.props
     return (
       <Sider className={styles.sider} width={siderWidth}>
@@ -107,13 +102,15 @@ export default class App extends NextApp {
             onClick={() => this.push('/')}
           />
         </div>
-        <Menu
-          theme='dark'
-          mode='vertical'
-          defaultSelectedKeys={[router.asPath]}
-        >
-          {config.map(item => this.renderMenuItem(item))}
-        </Menu>
+        {!__server__ && (
+          <Menu
+            theme='dark'
+            mode='vertical'
+            defaultSelectedKeys={[router.asPath]}
+          >
+            {config.map(item => this.renderMenuItem(item))}
+          </Menu>
+        )}
       </Sider>
     )
   }
