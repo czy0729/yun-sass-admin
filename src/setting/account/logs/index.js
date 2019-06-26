@@ -1,0 +1,9 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-25 18:08:45
+ * @Last Modified by:   czy0729
+ * @Last Modified time: 2019-06-25 18:08:45
+ */
+import React from 'react'
+
+export default () => <div>Logs</div>

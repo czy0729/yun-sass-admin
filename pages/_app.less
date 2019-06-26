@@ -1,0 +1,51 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-25 16:19:03
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-06-26 17:32:24
+ */
+@sider-width: 112px;
+@header-height: 64px;
+
+.sider {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  overflow: auto;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background-color: rgb(254, 221, 49);
+  box-shadow: 0px 2px 4px 0px rgba(233, 233, 233, 0.5);
+}
+.logoImg {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.hd {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: @sider-width;
+  right: 0;
+  padding: 0;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px 0px rgba(233, 233, 233, 0.5);
+}
+.breadcrumb {
+  padding-left: 24px;
+}
+.content {
+  min-height: 80vh;
+  margin: @header-height + 24px 16px 0;
+  overflow: initial;
+}
+.ft {
+  text-align: center;
+}

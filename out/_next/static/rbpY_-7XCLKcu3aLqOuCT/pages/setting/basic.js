@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["44fe"],{"0Gl0":function(n,t,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/setting/basic",function(){var n=e("N5bH");return{page:n.default||n}}])},N5bH:function(n,t,e){"use strict";e.r(t);var i=e("q1tI"),a=e.n(i);t.default=function(){return a.a.createElement("div",null,"Basic")}}},[["0Gl0","5d41","9da1"]]]);

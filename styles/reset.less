@@ -1,0 +1,32 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-26 14:25:27
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-06-26 14:42:00
+ */
+:global {
+  @menu-bg: rgb(56, 56, 56);
+  @menu-item-active: rgb(76, 76, 76);
+
+  .ant-layout {
+    background-color: #fff;
+  }
+  .ant-layout-sider {
+    background-color: @menu-bg;
+  }
+  .ant-menu-dark,
+  .ant-menu-dark .ant-menu-sub {
+    background-color: @menu-bg;
+  }
+  .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
+  .ant-menu.ant-menu-dark .ant-menu-item-selected {
+    background-color: @menu-item-active;
+  }
+  .ant-menu-item-active,
+  .ant-menu-item:hover,
+  .ant-menu-submenu-active,
+  .ant-menu-submenu-title:hover,
+  .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
+    color: #fff;
+  }
+}
