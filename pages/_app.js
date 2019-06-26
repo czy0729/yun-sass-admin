@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2019-06-25 15:44:16
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 20:12:05
+ * @Last Modified time: 2019-06-26 20:15:27
  */
 import React from 'react'
 import NextApp, { Container } from 'next/app'
@@ -124,8 +124,10 @@ export default class App extends NextApp {
       .split('/')
       .filter(item => !!item)
       .forEach(item => {
-        current += `${linkPrefix}/${item}`
-        const find = (sub || config).find(item => item.key === current)
+        current += `/${item}`
+        const find = (sub || config).find(
+          item => item.key === `${linkPrefix}${current}`
+        )
         if (find) {
           data.push(find)
           if (find.sub) {
