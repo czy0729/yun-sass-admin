@@ -3,13 +3,13 @@
  * @Author: czy0729
  * @Date: 2019-06-25 15:44:16
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 20:18:33
+ * @Last Modified time: 2019-06-27 10:57:07
  */
 import React from 'react'
 import NextApp, { Container } from 'next/app'
-import Router from 'next/router'
-import getConfig from 'next-server/config'
 import { Layout, Menu, Icon, Breadcrumb } from 'antd'
+import { server, linkPrefix } from '@/constants'
+import { routerPush } from '@/utils'
 import '@/styles/reset.less'
 import '@/styles/global.less'
 import styles from './_app.less'
@@ -17,8 +17,6 @@ import styles from './_app.less'
 const { SubMenu } = Menu
 const { Header, Content, Footer, Sider } = Layout
 
-const { publicRuntimeConfig } = getConfig()
-const { linkPrefix } = publicRuntimeConfig
 const config = [
   {
     icon: 'bulb',
@@ -56,14 +54,18 @@ const config = [
   }
 ]
 const siderWidth = 112
-const __server__ = typeof window === 'undefined'
 
 export default class App extends NextApp {
-  componentDidCatch() {}
+  // SSR
+  // static async getInitialProps({ Component, ctx }) {
+  //   let pageProps = {};
+  //   if (Component.getInitialProps) {
+  //     pageProps = await Component.getInitialProps(ctx);
+  //   }
+  //   return { pageProps };
+  // }
 
-  push = path => {
-    Router.push(path, `${linkPrefix}${path}`)
-  }
+  componentDidCatch() {}
 
   renderMenuItem(item) {
     if (item.sub) {
@@ -83,7 +85,7 @@ export default class App extends NextApp {
     }
 
     return (
-      <Menu.Item key={item.key} onClick={() => this.push(item.key)}>
+      <Menu.Item key={item.key} onClick={() => routerPush(item.key)}>
         {item.icon && <Icon type={item.icon} />}
         <span>{item.text}</span>
       </Menu.Item>
@@ -99,10 +101,10 @@ export default class App extends NextApp {
             className={styles.logoImg}
             src={`${linkPrefix}/static/images/logo.png`}
             alt=''
-            onClick={() => this.push('/')}
+            onClick={() => routerPush('/')}
           />
         </div>
-        {!__server__ && (
+        {!server && (
           <Menu
             theme='dark'
             mode='vertical'

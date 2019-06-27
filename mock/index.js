@@ -1,23 +1,10 @@
 /*
  * @Author: czy0729
- * @Date: 2019-06-26 11:36:33
+ * @Date: 2019-06-27 10:17:17
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 18:14:27
+ * @Last Modified time: 2019-06-27 10:17:41
  */
-import { random } from '@/utils'
-
-export const recommendDS = [
-  {
-    text: '是',
-    value: '1',
-    status: 'success'
-  },
-  {
-    text: '否',
-    value: '0',
-    status: 'default'
-  }
-]
+// import { random } from '@/utils'
 
 // const _dataSource = Array.from(Array(50), (v, k) => k).map(item => ({
 //   id: item,

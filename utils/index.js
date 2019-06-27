@@ -2,8 +2,18 @@
  * @Author: czy0729
  * @Date: 2019-06-21 11:50:38
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 15:47:23
+ * @Last Modified time: 2019-06-27 15:59:44
  */
+import Router from 'next/router'
+import { linkPrefix } from '@/constants'
+
+/**
+ * Router.push
+ * @param {*} path
+ */
+export function routerPush(path) {
+  Router.push(path, `${linkPrefix}${path}`)
+}
 
 /**
  * 补零

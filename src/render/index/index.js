@@ -2,27 +2,19 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 18:42:44
+ * @Last Modified time: 2019-06-27 11:14:45
  */
 import React from 'react'
 import { Badge, Divider, Popconfirm, Button, Modal, message } from 'antd'
 import deepmerge from 'deepmerge'
 import Table from '@/components/Table'
 import * as Utils from '@/utils'
-import { recommendDS, dataSource } from './ds'
+import { dataSource } from '@/mock'
+import { recommendDS } from './ds'
 
 const { Column } = Table
 
 export default class Render extends React.Component {
-  // SSR
-  // static async getInitialProps({ Component, ctx }) {
-  //   let pageProps = {};
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx);
-  //   }
-  //   return { pageProps };
-  // }
-
   state = {
     dataSource,
     selectedRowKeys: [],
@@ -43,7 +35,7 @@ export default class Render extends React.Component {
     })
   }
 
-  comfirmBatchDelete = () => {
+  confirmBatchDelete = () => {
     const { selectedRowIds } = this.state
     Modal.confirm({
       title: 'Do you Want to delete these items?',
@@ -69,12 +61,14 @@ export default class Render extends React.Component {
     const { selectedRowIds } = this.state
     return (
       <>
-        <Button type='primary'>添加产品</Button>
+        <Button type='primary' onClick={() => Utils.routerPush('/render/goods')}>
+          添加产品
+        </Button>
         <Button
           className='ml-sm'
           type='danger'
           disabled={!selectedRowIds.length}
-          onClick={this.comfirmBatchDelete}
+          onClick={this.confirmBatchDelete}
         >
           批量删除
         </Button>
@@ -132,10 +126,10 @@ export default class Render extends React.Component {
           sorter
           filters={recommendDS}
           render={value => (
-            <span>
+            <>
               <Badge status={Utils.getStatus(recommendDS, value)} />
               {Utils.getText(recommendDS, value)}
-            </span>
+            </>
           )}
         />
         <Column
