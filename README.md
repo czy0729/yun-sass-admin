@@ -7,9 +7,9 @@
 
 ### preview
 
-[表格示例](https://czy0729.github.io/yun-sass-admin/out/render/)  [对应写法](https://github.com/czy0729/yun-sass-admin/blob/master/src/render/index/index.js)
+[表格示例](https://czy0729.github.io/yun-sass-admin/out/render/)  [[对应写法]](https://github.com/czy0729/yun-sass-admin/blob/master/src/render/index/index.js)
 
-[表单示例](https://czy0729.github.io/yun-sass-admin/out/render/goods/)  [对应写法](https://github.com/czy0729/yun-sass-admin/blob/master/src/render/goods/index.js)
+[表单示例](https://czy0729.github.io/yun-sass-admin/out/render/goods/)  [[对应写法]](https://github.com/czy0729/yun-sass-admin/blob/master/src/render/goods/index.js)
 
 ---
 
