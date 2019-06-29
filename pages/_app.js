@@ -3,13 +3,14 @@
  * @Author: czy0729
  * @Date: 2019-06-25 15:44:16
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 10:57:07
+ * @Last Modified time: 2019-06-29 16:39:30
  */
 import React from 'react'
 import NextApp, { Container } from 'next/app'
-import { Layout, Menu, Icon, Breadcrumb } from 'antd'
-import { server, linkPrefix } from '@/constants'
+import { LocaleProvider, Layout, Menu, Icon, Breadcrumb } from 'antd'
 import { routerPush } from '@/utils'
+import { server, linkPrefix } from '@/constants'
+import locale from '@/constants/locale'
 import '@/styles/reset.less'
 import '@/styles/global.less'
 import styles from './_app.less'
@@ -187,7 +188,9 @@ export default class App extends NextApp {
           <Content className={styles.content}>
             {/* 实际页面 */}
             <Container>
-              <Component {...pageProps} />
+              <LocaleProvider locale={locale}>
+                <Component {...pageProps} />
+              </LocaleProvider>
             </Container>
           </Content>
           <Footer className={styles.ft}>©2019 Created by</Footer>

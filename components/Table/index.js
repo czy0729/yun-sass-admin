@@ -9,7 +9,7 @@
  * @Author: czy0729
  * @Date: 2019-06-26 09:42:44
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 10:55:53
+ * @Last Modified time: 2019-06-29 16:47:42
  */
 import React from 'react'
 import { Table as AntTable, Icon, Button, Input, DatePicker } from 'antd'
@@ -56,7 +56,6 @@ export default class Table extends React.Component {
             <RangePicker
               showTime={{ format: 'HH:mm' }}
               format='YYYY-MM-DD HH:mm'
-              placeholder={['Start Time', 'End Time']}
               onChange={value => {
                 // 点击了清空
                 if (!value.length) {
@@ -103,7 +102,7 @@ export default class Table extends React.Component {
   }
 
   // 生成查询参数
-  getSearchProps = ({ search, dataIndex }) => {
+  getSearchProps = ({ search, title, dataIndex }) => {
     if (!search) {
       return null
     }
@@ -120,7 +119,7 @@ export default class Table extends React.Component {
             ref={node => {
               this.searchInput = node
             }}
-            placeholder={`Search ${dataIndex}`}
+            placeholder={`查询${title}`}
             value={selectedKeys[0]}
             onChange={e =>
               setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -137,14 +136,14 @@ export default class Table extends React.Component {
             size='small'
             style={{ width: 90, marginRight: 8 }}
           >
-            Search
+            查询
           </Button>
           <Button
             onClick={() => this.handleReset(clearFilters)}
             size='small'
             style={{ width: 90 }}
           >
-            Reset
+            重置
           </Button>
         </div>
       ),
@@ -171,7 +170,12 @@ export default class Table extends React.Component {
         }
         return (
           <Highlighter
-            highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+            highlightStyle={{
+              padding: 0,
+              color: '#24292e',
+              fontWeight: 'bold',
+              backgroundColor: '#fff5b1'
+            }}
             searchWords={[this.state.searchText]}
             autoEscape
             textToHighlight={text.toString()}

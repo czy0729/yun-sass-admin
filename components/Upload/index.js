@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 17:43:09
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 15:13:36
+ * @Last Modified time: 2019-06-29 16:49:12
  */
 import React from 'react'
 import { Upload as AntUpload, Icon, Modal } from 'antd'
@@ -120,7 +120,7 @@ export default class Upload extends React.Component {
           {fileList.length >= 3 ? null : (
             <>
               <Icon type='plus' />
-              <div>Upload</div>
+              <div>上传</div>
             </>
           )}
         </AntUpload>

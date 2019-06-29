@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-28 16:35:31
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 15:08:34
+ * @Last Modified time: 2019-06-29 16:49:17
  */
 import React from 'react'
 import { Upload, Button, Icon } from 'antd'
@@ -94,7 +94,7 @@ export default class UploadFile extends React.Component {
         onChange={this.handleChange}
       >
         <Button disabled={disabled}>
-          <Icon type='upload' /> Upload
+          <Icon type='upload' /> 上传
         </Button>
       </Upload>
     )

@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 11:14:45
+ * @Last Modified time: 2019-06-29 16:05:36
  */
 import React from 'react'
 import deepmerge from 'deepmerge'
@@ -61,7 +61,10 @@ export default class Render extends React.Component {
     const { selectedRowIds } = this.state
     return (
       <>
-        <Button type='primary' onClick={() => Utils.routerPush('/render/goods')}>
+        <Button
+          type='primary'
+          onClick={() => Utils.routerPush('/render/goods')}
+        >
           添加产品
         </Button>
         <Button
@@ -81,7 +84,9 @@ export default class Render extends React.Component {
       <div>
         <a>浏览</a>
         <Divider type='vertical' />
-        <a>编辑</a>
+        <a onClick={() => Utils.routerPush(`/render/goods?id=${value.id}`)}>
+          编辑
+        </a>
         <Divider type='vertical' />
         <Popconfirm title='确定删除?' onConfirm={() => this.doDelete([value])}>
           <a>删除</a>
