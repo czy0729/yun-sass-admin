@@ -4,7 +4,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 11:24:24
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 16:58:13
+ * @Last Modified time: 2019-06-29 14:56:26
  */
 import React from 'react'
 import { Form } from 'antd'
@@ -17,6 +17,7 @@ const Item = ({
   initialValue,
   options,
   rules,
+  extra,
   children,
   ...other
 }) => (
@@ -29,6 +30,18 @@ const Item = ({
           ...options,
           rules: rules.slice()
         })(children)}
+    {extra && (
+      <span
+        style={{
+          position: 'absolute',
+          right: 0,
+          marginRight: -8,
+          transform: 'translateX(100%)'
+        }}
+      >
+        {extra}
+      </span>
+    )}
   </Form.Item>
 )
 
@@ -40,6 +53,7 @@ Item.defaultProps = {
   initialValue: undefined, // 常用规则, options.initialValue
   options: {}, // 其他表单规则
   rules: [], // 表单验证规则
+  extra: undefined, // 末尾追加文字
   children: undefined // 表单项控件包裹内容
 }
 

@@ -3,11 +3,11 @@
  * @Author: czy0729
  * @Date: 2019-06-27 17:18:07
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 17:27:17
+ * @Last Modified time: 2019-06-28 16:38:26
  */
 import React from 'react'
 import { Radio as AntRadio } from 'antd'
-import Item from './item'
+import Item from './Item'
 
 const Radio = ({
   className,

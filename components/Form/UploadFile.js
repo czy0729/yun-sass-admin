@@ -1,14 +1,14 @@
 /*
  * @Author: czy0729
- * @Date: 2019-06-27 17:36:55
+ * @Date: 2019-06-28 16:29:12
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-28 16:39:09
+ * @Last Modified time: 2019-06-28 16:39:24
  */
 import React from 'react'
-import CUpload from '../Upload'
+import CUploadFile from '../UploadFile'
 import Item from './Item'
 
-const Upload = ({
+const UploadFile = ({
   className,
   children,
   form,
@@ -28,8 +28,8 @@ const Upload = ({
     options={options}
     rules={rules}
   >
-    <CUpload {...other} />
+    <CUploadFile {...other} />
   </Item>
 )
 
-export default Upload
+export default UploadFile

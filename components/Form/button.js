@@ -2,11 +2,11 @@
  * @Author: czy0729
  * @Date: 2019-06-27 14:45:31
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 16:53:26
+ * @Last Modified time: 2019-06-29 11:42:12
  */
 import React, { useState } from 'react'
 import { Button as AntButton } from 'antd'
-import Item from './item'
+import Item from './Item'
 
 const tailFormItemLayout = {
   wrapperCol: {
@@ -28,10 +28,10 @@ const Button = ({ className, children, form, onSubmit, ...other }) => {
       <AntButton
         type='primary'
         loading={loading}
-        onClick={async () => {
+        onClick={async e => {
           setLoading(true)
           try {
-            await form.onSubmit(form, onSubmit)
+            await form.onSubmit(onSubmit, e)
           } catch (e) {
             // do nothing
           } finally {

@@ -2,10 +2,11 @@
  * @Author: czy0729
  * @Date: 2019-06-27 17:43:09
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 18:41:44
+ * @Last Modified time: 2019-06-29 15:13:36
  */
 import React from 'react'
 import { Upload as AntUpload, Icon, Modal } from 'antd'
+import './index.less'
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -16,19 +17,23 @@ function getBase64(file) {
     reader.onerror = error => reject(error)
   })
 }
-function getFileList(value) {
-  return value.map((item, index) => ({
-    uid: `${item}|${index}`,
-    name: item,
-    status: 'done',
-    url: item
-  }))
+function getFileList(value = []) {
+  return value
+    .filter(item => !!item)
+    .map((item, index) => ({
+      uid: `${item}|${index}`,
+      name: item,
+      status: 'done',
+      url: item
+    }))
 }
 function getReturnValue(fileList) {
   return fileList.map(item => item.url || item.response.url)
 }
 
-export default class PicturesWall extends React.Component {
+const cls = 'c-upload'
+
+export default class Upload extends React.Component {
   static defaultProps = {
     onChange: Function.prototype
   }
@@ -104,6 +109,7 @@ export default class PicturesWall extends React.Component {
     return (
       <>
         <AntUpload
+          className={cls}
           action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
           listType='picture-card'
           fileList={fileList}
@@ -120,6 +126,7 @@ export default class PicturesWall extends React.Component {
         </AntUpload>
         <Modal
           visible={previewVisible}
+          width={800}
           footer={null}
           onCancel={this.handleCancel}
         >

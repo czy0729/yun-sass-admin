@@ -1,20 +1,27 @@
 /*
  * @Author: czy0729
- * @Date: 2019-06-27 17:36:55
+ * @Date: 2019-06-29 14:09:55
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-28 16:39:09
+ * @Last Modified time: 2019-06-29 14:54:17
  */
 import React from 'react'
-import CUpload from '../Upload'
+import { InputNumber as AntInputNumber } from 'antd'
 import Item from './Item'
 
-const Upload = ({
+const InputNumber = ({
+  // Form.Item
   className,
   children,
   form,
   label,
   name,
   initialValue,
+  extra,
+
+  // InputNumber
+  min = 0,
+
+  // form
   options,
   rules,
   ...other
@@ -27,9 +34,11 @@ const Upload = ({
     initialValue={initialValue}
     options={options}
     rules={rules}
+    extra={extra}
+    hasFeedback
   >
-    <CUpload {...other} />
+    <AntInputNumber min={min} style={{ width: 128 }} {...other} />
   </Item>
 )
 
-export default Upload
+export default InputNumber

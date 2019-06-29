@@ -3,11 +3,11 @@
  * @Author: czy0729
  * @Date: 2019-06-27 11:22:44
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 17:22:07
+ * @Last Modified time: 2019-06-29 14:30:25
  */
 import React from 'react'
 import { Input as AntInput } from 'antd'
-import Item from './item'
+import Item from './Item'
 
 const Input = ({
   className,

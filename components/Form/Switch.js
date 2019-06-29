@@ -1,14 +1,15 @@
 /*
+ * @Doc: https://ant.design/components/switch-cn/
  * @Author: czy0729
- * @Date: 2019-06-27 17:36:55
+ * @Date: 2019-06-29 14:03:45
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-28 16:39:09
+ * @Last Modified time: 2019-06-29 14:06:31
  */
 import React from 'react'
-import CUpload from '../Upload'
+import { Switch as AntSwitch } from 'antd'
 import Item from './Item'
 
-const Upload = ({
+const Switch = ({
   className,
   children,
   form,
@@ -28,8 +29,8 @@ const Upload = ({
     options={options}
     rules={rules}
   >
-    <CUpload {...other} />
+    <AntSwitch {...other} />
   </Item>
 )
 
-export default Upload
+export default Switch

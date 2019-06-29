@@ -5,8 +5,8 @@
  * @Last Modified time: 2019-06-27 11:14:45
  */
 import React from 'react'
-import { Badge, Divider, Popconfirm, Button, Modal, message } from 'antd'
 import deepmerge from 'deepmerge'
+import { Badge, Divider, Popconfirm, Button, Modal, message } from 'antd'
 import Table from '@/components/Table'
 import * as Utils from '@/utils'
 import { dataSource } from '@/mock'

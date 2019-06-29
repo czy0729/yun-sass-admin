@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 11:51:06
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 16:45:04
+ * @Last Modified time: 2019-06-29 12:20:44
  */
 import React from 'react'
 import { Form } from 'antd'
@@ -63,15 +63,17 @@ const onSubmit = (form, next = Function.prototype, e) =>
  */
 const formDecorator = ComposedComponent =>
   Form.create()(({ form, ...otherProps }) => {
+    const _onSubmit = (...arg) => onSubmit(form, ...arg)
+
     // eslint-disable-next-line no-param-reassign
-    form.onSubmit = onSubmit
+    form.onSubmit = _onSubmit
     return (
       <ComposedComponent
         form={form}
         onValidate={onValidate}
         onErr={onErr}
         onOk={onOk}
-        onSubmit={onSubmit}
+        onSubmit={_onSubmit}
         {...otherProps}
       />
     )
