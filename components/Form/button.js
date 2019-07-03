@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 14:45:31
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 11:42:12
+ * @Last Modified time: 2019-07-03 17:08:51
  */
 import React, { useState } from 'react'
 import { Button as AntButton } from 'antd'
@@ -15,8 +15,8 @@ const tailFormItemLayout = {
       offset: 0
     },
     sm: {
-      span: 18,
-      offset: 6
+      span: 17,
+      offset: 7
     }
   }
 }

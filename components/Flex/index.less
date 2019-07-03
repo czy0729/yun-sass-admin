@@ -1,0 +1,101 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-07-03 16:59:44
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-03 17:04:38
+ */
+:global {
+  .c-flex {
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+    &-dir-row {
+      flex-direction: row;
+
+      &-reverse {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &-dir-column {
+      flex-direction: column;
+
+      &-reverse {
+        flex-direction: column-reverse;
+      }
+    }
+
+    &-nowrap {
+      flex-wrap: nowrap;
+    }
+    &-wrap {
+      flex-wrap: wrap;
+
+      &-reverse {
+        flex-wrap: wrap-reverse;
+      }
+    }
+
+    &-justify {
+      &-start {
+        justify-content: flex-start;
+      }
+      &-end {
+        justify-content: flex-end;
+      }
+      &-center {
+        justify-content: center;
+      }
+      &-between {
+        justify-content: space-between;
+      }
+      &-around {
+        justify-content: space-around;
+      }
+    }
+
+    &-align {
+      &-start {
+        align-items: flex-start;
+      }
+      &-end {
+        align-items: flex-end;
+      }
+      &-center {
+        align-items: center;
+      }
+      &-stretch {
+        align-items: stretch;
+      }
+      &-baseline {
+        align-items: baseline;
+      }
+      &-content {
+        &-start {
+          align-content: flex-start;
+        }
+        &-end {
+          align-items: flex-end;
+        }
+        &-center {
+          align-items: center;
+        }
+        &-between {
+          align-items: stretch;
+        }
+        &-around {
+          align-items: baseline;
+        }
+        &-stretch {
+          align-items: baseline;
+        }
+      }
+    }
+
+    &-item {
+      box-sizing: border-box;
+      flex: 1;
+    }
+  }
+}

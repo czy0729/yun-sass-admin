@@ -4,7 +4,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 10:53:01
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 13:58:22
+ * @Last Modified time: 2019-07-03 17:35:26
  */
 import React from 'react'
 import classNames from 'classnames'
@@ -16,6 +16,7 @@ import Item from './Item'
 import Radio from './Radio'
 import Select from './Select'
 import Switch from './Switch'
+import Text from './Text'
 import Upload from './Upload'
 import UploadFile from './UploadFile'
 import create from './utils/create'
@@ -31,7 +32,10 @@ const Form = ({ className, form, layout, children, ...other }) => {
         },
         wrapperCol: {
           xs: { span: 24 },
-          sm: { span: 18 }
+          sm: {
+            span: 17,
+            offset: 1
+          }
         }
       }
     : {}
@@ -67,6 +71,7 @@ Form.Item = Item
 Form.Radio = Radio
 Form.Select = Select
 Form.Switch = Switch
+Form.Text = Text
 Form.Upload = Upload
 Form.UploadFile = UploadFile
 

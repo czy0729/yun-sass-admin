@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-29 14:09:55
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 14:54:17
+ * @Last Modified time: 2019-07-03 16:48:34
  */
 import React from 'react'
 import { InputNumber as AntInputNumber } from 'antd'
@@ -16,6 +16,7 @@ const InputNumber = ({
   label,
   name,
   initialValue,
+  right,
   extra,
 
   // InputNumber
@@ -34,6 +35,7 @@ const InputNumber = ({
     initialValue={initialValue}
     options={options}
     rules={rules}
+    right={right}
     extra={extra}
     hasFeedback
   >

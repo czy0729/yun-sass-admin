@@ -4,25 +4,23 @@
  * @Author: czy0729
  * @Date: 2019-06-27 11:24:24
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-02 15:19:12
+ * @Last Modified time: 2019-07-03 16:48:01
  */
 import React from 'react'
 import { Form } from 'antd'
 import styles from './index.less'
 
 const Item = ({
-  className,
   form,
-  label,
   name,
   initialValue,
   options,
   rules,
-  extra,
+  right,
   children,
   ...other
 }) => (
-  <Form.Item className={className} label={label} {...other}>
+  <Form.Item {...other}>
     {name === undefined
       ? children
       : // https://ant.design/components/form-cn/#this.props.form.getFieldDecorator(id,-options)
@@ -31,7 +29,7 @@ const Item = ({
           ...options,
           rules: rules.slice()
         })(children)}
-    {extra && <div className={styles.extra}>{extra}</div>}
+    {right && <div className={styles.right}>{right}</div>}
   </Form.Item>
 )
 
@@ -43,7 +41,7 @@ Item.defaultProps = {
   initialValue: undefined, // 常用规则, options.initialValue
   options: {}, // 其他表单规则
   rules: [], // 表单验证规则
-  extra: undefined, // 末尾追加文字
+  right: undefined, // 末尾追加文字
   children: undefined // 表单项控件包裹内容
 }
 

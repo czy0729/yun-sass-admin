@@ -1,16 +1,14 @@
 /*
- * @Doc: https://ant.design/components/input-cn/
  * @Author: czy0729
- * @Date: 2019-06-27 11:22:44
+ * @Date: 2019-07-03 17:33:33
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 16:47:20
+ * @Last Modified time: 2019-07-03 17:39:34
  */
 import React from 'react'
-import { Input as AntInput } from 'antd'
 import Item from './Item'
 import styles from './index.less'
 
-const Input = ({
+const Text = ({
   className,
   children,
   form,
@@ -21,8 +19,7 @@ const Input = ({
   rules,
   right,
   extra,
-  hasFeedback,
-  placeholder,
+  text,
   ...other
 }) => (
   <Item
@@ -35,15 +32,11 @@ const Input = ({
     rules={rules}
     right={right}
     extra={extra}
-    hasFeedback={hasFeedback}
   >
-    <AntInput className={styles.input} placeholder={placeholder} {...other} />
+    <span className={styles.text} {...other}>
+      {text}
+    </span>
   </Item>
 )
 
-Input.defaultProps = {
-  hasFeedback: true,
-  placeholder: '请输入'
-}
-
-export default Input
+export default Text

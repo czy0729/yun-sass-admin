@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 17:43:09
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-02 15:22:40
+ * @Last Modified time: 2019-07-03 16:54:31
  */
 import React from 'react'
 import { Upload as AntUpload, Icon, Modal } from 'antd'
@@ -35,6 +35,7 @@ const cls = 'c-upload'
 
 export default class Upload extends React.Component {
   static defaultProps = {
+    maxLength: 1,
     onChange: Function.prototype
   }
 
@@ -105,6 +106,7 @@ export default class Upload extends React.Component {
   }
 
   render() {
+    const { maxLength } = this.props
     const { previewVisible, previewImage, fileList } = this.state
     return (
       <>
@@ -117,7 +119,7 @@ export default class Upload extends React.Component {
           onPreview={this.handlePreview}
           onChange={this.handleChange}
         >
-          {fileList.length >= 3 ? null : (
+          {fileList.length >= maxLength ? null : (
             <>
               <Icon type='plus' />
               <div>上传</div>

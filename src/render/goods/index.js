@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 16:09:40
+ * @Last Modified time: 2019-07-03 16:54:54
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
@@ -156,7 +156,7 @@ class Goods extends React.Component {
           data={categories}
           rules={Form.rules.required}
           mode='multiple'
-          extra={<Category />}
+          right={<Category />}
         />
         <Form.Upload
           label='产品图片'
@@ -165,15 +165,16 @@ class Goods extends React.Component {
           initialValue={[
             'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
           ]}
+          maxLength={9}
         />
         <Form.Input
           label='产品链接'
           name='url'
           rules={Form.rules.gen('url', false)}
           placeholder='https://'
-          extra={this.renderLink()}
+          right={this.renderLink()}
         />
-        <Form.Item label='产品IES'>
+        <Form.Item label='产品IES' required>
           <IESTable
             dataSource={dataSource}
             onShowIESForm={this.showIESForm}
@@ -191,7 +192,7 @@ class Goods extends React.Component {
           name='lx'
           max={100}
           placeholder='0-100'
-          extra='lx'
+          right='lx'
         />
         <Form.Switch label='首页推荐' name='recommend' />
         <Form.InputNumber label='序号' name='sort' />

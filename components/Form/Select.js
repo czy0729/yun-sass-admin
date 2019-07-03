@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-07-02 14:43:20
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 15:41:16
+ * @Last Modified time: 2019-07-03 16:48:48
  */
 import React from 'react'
 import { Select as AntSelect } from 'antd'
@@ -18,6 +18,7 @@ const Select = ({
   label,
   name,
   initialValue,
+  right,
   extra,
   options,
   rules,
@@ -32,6 +33,7 @@ const Select = ({
     initialValue={initialValue}
     options={options}
     rules={rules}
+    right={right}
     extra={extra}
     hasFeedback
   >

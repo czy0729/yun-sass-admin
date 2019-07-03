@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2019-06-29 14:03:45
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 14:06:31
+ * @Last Modified time: 2019-07-03 17:16:00
  */
 import React from 'react'
 import { Switch as AntSwitch } from 'antd'
@@ -18,6 +18,8 @@ const Switch = ({
   initialValue,
   options,
   rules,
+  extra,
+  right,
   ...other
 }) => (
   <Item
@@ -26,8 +28,13 @@ const Switch = ({
     label={label}
     name={name}
     initialValue={initialValue}
-    options={options}
+    options={{
+      valuePropName: 'checked',
+      ...options
+    }}
     rules={rules}
+    extra={extra}
+    right={right}
   >
     <AntSwitch {...other} />
   </Item>

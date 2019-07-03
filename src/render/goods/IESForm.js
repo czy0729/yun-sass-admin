@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-28 16:07:03
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 15:44:23
+ * @Last Modified time: 2019-07-03 16:49:52
  */
 import React from 'react'
 import Form from '@/components/Form'
@@ -25,20 +25,22 @@ function IESForm({ form, ies, angle, lm, cct }) {
       <Form.InputNumber
         label='光通量'
         name='lm'
+        rules={Form.rules.required}
         initialValue={lm}
         max={50000}
         placeholder='0-50000'
-        extra='lm'
+        right='lm'
       />
       <Form.InputNumber
         label='色温'
         name='cct'
+        rules={Form.rules.required}
         initialValue={cct}
         min={2700}
         max={10000}
         step={100}
         placeholder='2700-10000'
-        extra='K'
+        right='K'
       />
     </Form>
   )
