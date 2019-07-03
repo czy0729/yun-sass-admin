@@ -4,10 +4,11 @@
  * @Author: czy0729
  * @Date: 2019-06-27 11:24:24
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 14:56:26
+ * @Last Modified time: 2019-07-02 15:19:12
  */
 import React from 'react'
 import { Form } from 'antd'
+import styles from './index.less'
 
 const Item = ({
   className,
@@ -30,18 +31,7 @@ const Item = ({
           ...options,
           rules: rules.slice()
         })(children)}
-    {extra && (
-      <span
-        style={{
-          position: 'absolute',
-          right: 0,
-          marginRight: -8,
-          transform: 'translateX(100%)'
-        }}
-      >
-        {extra}
-      </span>
-    )}
+    {extra && <div className={styles.extra}>{extra}</div>}
   </Form.Item>
 )
 

@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-03-13 05:15:36
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 14:31:01
+ * @Last Modified time: 2019-07-03 09:35:07
  */
 module.exports = {
   root: true,
@@ -83,12 +83,13 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'react/forbid-prop-types': 0,
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
-    'react/jsx-indent': ['error', 2], // Validate JSX indentation
-    'react/jsx-indent-props': ['error', 2], // Validate props indentation in JSX
+    'react/jsx-indent': ['error', 2],
+    'react/jsx-indent-props': ['error', 2],
     'react/jsx-one-expression-per-line': 0,
     'react/jsx-wrap-multilines': 0,
+    'react/no-access-state-in-setstate': 0,
     'react/no-multi-comp': 0,
-    'react/prop-types': 0, // Prevent missing props validation in a React component definition
+    'react/prop-types': 0,
     'react/sort-comp': 0,
 
     // https://github.com/evcohen/eslint-plugin-jsx-a11y
@@ -102,11 +103,11 @@ module.exports = {
     ],
 
     // 下面屏蔽的都是一些web端辅助元素属性, 如aria-*
+    'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'jsx-a11y/no-static-element-interactions': 0,
     'jsx-ally/interactive-supports-focus': 0,
-    'jsx-a11y/anchor-is-valid': 0,
     'jsx-quotes': 0
   }
 }

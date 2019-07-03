@@ -1,0 +1,210 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-26 14:25:27
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-06-26 14:42:00
+ */
+.ant-layout {
+  background-color: #fff;
+}
+.ant-layout-sider {
+  background-color: #383838;
+}
+.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub {
+  background-color: #383838;
+}
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: #4c4c4c;
+}
+.ant-menu-item-active,
+.ant-menu-item:hover,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open {
+  color: #fff;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-26 14:25:36
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-03 16:06:46
+ */
+.ml-sm {
+  margin-left: 12px;
+}
+a[disabled] {
+  cursor: not-allowed;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-27 14:16:55
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-03 15:21:35
+ */
+.form__klal {
+  max-width: 800px;
+}
+.extra__Elmn {
+  position: absolute;
+  right: 0;
+  margin-right: -12px;
+  transform: translate(100%, -100%);
+}
+.input__pCiM {
+  max-width: 400px;
+}
+.select__1ls1 {
+  max-width: 400px;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-29 15:03:03
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-02 14:36:12
+ */
+.c-upload .ant-upload-list-picture-card .ant-upload-list-item,
+.c-upload .ant-upload.ant-upload-select-picture-card {
+  width: 120px;
+  height: 120px;
+}
+.c-upload .ant-upload-list-item-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.has-error .c-upload .ant-upload-select {
+  border-color: #f5222d;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-29 15:03:03
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-06-29 15:10:15
+ */
+.has-error .c-upload-file .ant-upload-select .ant-btn {
+  border-color: #f5222d;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-25 16:19:03
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-02 17:25:25
+ */
+.sider__girx {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  overflow: auto;
+}
+.logo__2pmF {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  background-color: #fedd31;
+  box-shadow: 0px 2px 4px 0px rgba(33, 33, 33, 0.5);
+}
+.logoImg__14IU {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.hd__1UQK {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 112px;
+  right: 0;
+  padding: 0;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px 0px rgba(233, 233, 233, 0.5);
+}
+.breadcrumb__Yva2 {
+  padding-left: 24px;
+}
+.content__39aI {
+  min-height: 80vh;
+  margin: 88px 16px 0;
+  overflow: initial;
+}
+.ft__SL46 {
+  text-align: center;
+}
+.formModal__s7gH .ant-modal-content {
+  padding: 24px 32px;
+}
+.formModal__s7gH .ant-modal-header {
+  padding: 0;
+  border-bottom: 0;
+}
+.formModal__s7gH .ant-modal-body {
+  padding: 24px 0;
+}
+.formModal__s7gH .ant-modal-footer {
+  padding: 0;
+  border-top: 0;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-28 15:56:51
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-03 15:16:11
+ */
+.table__2Bmm th {
+  background: #fff !important;
+}
+.table__2Bmm td {
+  max-width: 160px;
+  word-break: break-all;
+}
+.table__2Bmm .ant-table-footer {
+  padding: 8px !important;
+  margin: 0 8px;
+  background: #fff !important;
+}
+.table__2Bmm .ant-table-footer:before {
+  background: #e8e8e8;
+}
+.tableCategory__2v3M .ant-table {
+  margin-left: -8px;
+  margin-right: -8px;
+  border: 0;
+}
+.tableCategory__2v3M .drop-over-downward td {
+  position: relative;
+}
+.tableCategory__2v3M .drop-over-downward td:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #1890ff;
+}
+.tableCategory__2v3M .drop-over-upward td {
+  position: relative;
+}
+.tableCategory__2v3M .drop-over-upward td:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #1890ff;
+}
+.tableCategory__2v3M .ant-form-item {
+  margin-bottom: 0;
+}
+

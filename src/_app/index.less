@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-25 16:19:03
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 14:58:33
+ * @Last Modified time: 2019-07-02 17:25:25
  */
 @sider-width: 112px;
 @header-height: 64px;
@@ -48,4 +48,23 @@
 }
 .ft {
   text-align: center;
+}
+
+.formModal {
+  :global {
+    .ant-modal-content {
+      padding: 24px 32px;
+    }
+    .ant-modal-header {
+      padding: 0;
+      border-bottom: 0;
+    }
+    .ant-modal-body {
+      padding: 24px 0;
+    }
+    .ant-modal-footer {
+      padding: 0;
+      border-top: 0;
+    }
+  }
 }

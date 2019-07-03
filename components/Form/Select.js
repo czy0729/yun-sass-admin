@@ -1,27 +1,27 @@
 /*
- * @Doc: https://ant.design/components/input-cn/
  * @Author: czy0729
- * @Date: 2019-06-27 11:22:44
+ * @Date: 2019-07-02 14:43:20
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 16:04:53
+ * @Last Modified time: 2019-07-03 15:41:16
  */
 import React from 'react'
-import { Input as AntInput } from 'antd'
+import { Select as AntSelect } from 'antd'
 import Item from './Item'
 import styles from './index.less'
 
-const Input = ({
+const { Option } = AntSelect
+
+const Select = ({
   className,
   children,
   form,
   label,
   name,
   initialValue,
+  extra,
   options,
   rules,
-  extra,
-  hasFeedback,
-  placeholder,
+  data,
   ...other
 }) => (
   <Item
@@ -33,15 +33,18 @@ const Input = ({
     options={options}
     rules={rules}
     extra={extra}
-    hasFeedback={hasFeedback}
+    hasFeedback
   >
-    <AntInput className={styles.input} placeholder={placeholder} {...other} />
+    <AntSelect className={styles.select} {...other}>
+      {data.map(item => (
+        <Option key={item.value}>{item.text}</Option>
+      ))}
+    </AntSelect>
   </Item>
 )
 
-Input.defaultProps = {
-  hasFeedback: true,
-  placeholder: '请输入'
+Select.defaultProps = {
+  data: []
 }
 
-export default Input
+export default Select

@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 17:43:09
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 16:49:12
+ * @Last Modified time: 2019-07-02 15:22:40
  */
 import React from 'react'
 import { Upload as AntUpload, Icon, Modal } from 'antd'
@@ -126,7 +126,7 @@ export default class Upload extends React.Component {
         </AntUpload>
         <Modal
           visible={previewVisible}
-          width={800}
+          width={640}
           footer={null}
           onCancel={this.handleCancel}
         >

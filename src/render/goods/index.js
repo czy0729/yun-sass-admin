@@ -2,19 +2,23 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 15:32:01
+ * @Last Modified time: 2019-07-03 16:09:40
  */
 import React from 'react'
+import { observer, inject } from 'mobx-react'
 import deepmerge from 'deepmerge'
 import { Modal, message } from 'antd'
 import Form from '@/components/Form'
 import * as utils from '@/utils'
-import IESTable from './ies-table'
-import IESForm from './ies-form'
+import IESTable from './IESTable'
+import IESForm from './IESForm'
+import Category from './Category'
 import { screenDS } from './ds'
 
 export default
+@inject('GlobalStore', 'UIStore')
 @Form.create
+@observer
 class Goods extends React.Component {
   state = {
     dataSource: [
@@ -31,39 +35,26 @@ class Goods extends React.Component {
     ]
   }
 
-  IESForm
-
-  onShowIESForm = (item = {}) => {
-    Modal.confirm({
-      icon: null,
+  showIESForm = (item = {}) => {
+    const { UIStore } = this.props
+    UIStore.showFormModal({
       title: `${item.id ? '编辑' : '新增'}产品IES`,
-      width: 560,
-      content: (
-        <IESForm forwardForm={form => (this.IESForm = form)} {...item} />
-      ),
-      onOk: async () => {
-        if (!this.IESForm) {
-          return Promise.reject()
-        }
-
-        return this.IESForm.onSubmit(values =>
-          this.onEditIES({
-            ...item,
-            ...values
-          })
-        )
-      },
-      onCancel: () => (this.IESForm = null)
+      children: <IESForm {...item} />,
+      onOk: async values => {
+        UIStore.loadingFormModal()
+        await this.onEditIES({
+          ...item,
+          ...values
+        })
+        UIStore.closeFormModal()
+      }
     })
   }
 
   onSubmit = async values => {
     const { dataSource } = this.state
-    const hide = message.loading('Action in progress..', 0)
-
     await utils.sleep(1600)
 
-    hide()
     setTimeout(() => {
       message.success('操作成功')
       Modal.info({
@@ -132,8 +123,24 @@ class Goods extends React.Component {
     }, 400)
   }
 
-  render() {
+  renderLink() {
     const { form } = this.props
+    const error = form.getFieldError('url')
+    const value = form.getFieldValue('url')
+    if (error || !value) {
+      return <a disabled>浏览</a>
+    }
+
+    return (
+      <a href={value} target='_blank' rel='noopener noreferrer'>
+        浏览
+      </a>
+    )
+  }
+
+  render() {
+    const { form, GlobalStore } = this.props
+    const { categories } = GlobalStore.state
     const { dataSource } = this.state
     return (
       <Form form={form}>
@@ -143,11 +150,13 @@ class Goods extends React.Component {
           rules={Form.rules.required}
           placeholder='最多60个字'
         />
-        <Form.Input
-          label='产品链接'
-          name='url'
-          rules={Form.rules.gen('url', false)}
-          placeholder='https://'
+        <Form.Select
+          label='产品分类'
+          name='category'
+          data={categories}
+          rules={Form.rules.required}
+          mode='multiple'
+          extra={<Category />}
         />
         <Form.Upload
           label='产品图片'
@@ -157,10 +166,17 @@ class Goods extends React.Component {
             'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
           ]}
         />
+        <Form.Input
+          label='产品链接'
+          name='url'
+          rules={Form.rules.gen('url', false)}
+          placeholder='https://'
+          extra={this.renderLink()}
+        />
         <Form.Item label='产品IES'>
           <IESTable
             dataSource={dataSource}
-            onShowIESForm={this.onShowIESForm}
+            onShowIESForm={this.showIESForm}
             onDeleteIES={this.onDeleteIES}
           />
         </Form.Item>
@@ -171,12 +187,14 @@ class Goods extends React.Component {
           initialValue={utils.getValue(screenDS, '普通场景')}
         />
         <Form.InputNumber
-          label='空间照度'
+          label='环境照度'
           name='lx'
           max={100}
           placeholder='0-100'
           extra='lx'
         />
+        <Form.Switch label='首页推荐' name='recommend' />
+        <Form.InputNumber label='序号' name='sort' />
         <Form.Button onSubmit={this.onSubmit}>保存</Form.Button>
       </Form>
     )
