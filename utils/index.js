@@ -2,13 +2,13 @@
  * @Author: czy0729
  * @Date: 2019-06-21 11:50:38
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-27 15:59:44
+ * @Last Modified time: 2019-07-04 09:55:59
  */
 import Router from 'next/router'
 import { linkPrefix } from '@/constants'
 
 /**
- * Router.push
+ * [*]Router.push
  * @param {*} path
  */
 export function routerPush(path) {

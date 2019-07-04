@@ -2,14 +2,11 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:27:41
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 16:12:53
+ * @Last Modified time: 2019-07-04 09:56:17
  */
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
-import getConfig from 'next-server/config'
-
-const { publicRuntimeConfig } = getConfig()
-const { linkPrefix } = publicRuntimeConfig
+import { linkPrefix } from '@/constants'
 
 export default class MyDocument extends Document {
   render() {

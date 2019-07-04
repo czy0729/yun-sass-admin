@@ -2,10 +2,10 @@
  * @Author: czy0729
  * @Date: 2019-06-27 14:16:55
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 17:40:29
+ * @Last Modified time: 2019-07-04 09:42:36
  */
 .form {
-  max-width: 800px;
+  max-width: 840px;
 }
 .right {
   position: absolute;
@@ -20,6 +20,18 @@
   max-width: 400px;
 }
 .text {
+  margin-bottom: 0;
   color: #0d1a26;
   font-weight: 500;
+}
+.upload {
+  :global {
+    .has-error {
+      .c-upload {
+        .ant-upload-select {
+          border: 1px solid #f5222d;
+        }
+      }
+    }
+  }
 }

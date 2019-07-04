@@ -2,11 +2,13 @@
  * @Author: czy0729
  * @Date: 2019-06-27 17:36:55
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-28 16:39:09
+ * @Last Modified time: 2019-07-04 09:41:02
  */
 import React from 'react'
+import classNames from 'classnames'
 import CUpload from '../Upload'
 import Item from './Item'
+import styles from './index.less'
 
 const Upload = ({
   className,
@@ -20,7 +22,7 @@ const Upload = ({
   ...other
 }) => (
   <Item
-    className={className}
+    className={classNames(styles.upload, className)}
     form={form}
     label={label}
     name={name}

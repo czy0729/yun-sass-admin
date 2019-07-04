@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["d0a3"],{RNiq:function(n,a,e){"use strict";e.r(a);var t=e("q1tI"),i=e.n(t);a.default=function(){return i.a.createElement("div",{className:"example"},"Dashboard")}},vlRD:function(n,a,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/",function(){var n=e("RNiq");return{page:n.default||n}}])}},[["vlRD","5d41","9da1"]]]);

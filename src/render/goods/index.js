@@ -2,14 +2,14 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 16:54:54
+ * @Last Modified time: 2019-07-04 09:49:09
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import deepmerge from 'deepmerge'
 import { Modal, message } from 'antd'
 import Form from '@/components/Form'
-import * as utils from '@/utils'
+import { sleep, random, getValue } from '@/utils'
 import IESTable from './IESTable'
 import IESForm from './IESForm'
 import Category from './Category'
@@ -25,7 +25,7 @@ class Goods extends React.Component {
       {
         id: 1,
         ies: {
-          name: 'test_longggggggggggggggggggggggggg_24D_3.dat',
+          name: 'test_24D_3.dat',
           url: 'https://litku.oss-cn-beijing.aliyuncs.com/ies/ieses/24D_3.dat'
         },
         angle: 'ies_24D',
@@ -53,7 +53,7 @@ class Goods extends React.Component {
 
   onSubmit = async values => {
     const { dataSource } = this.state
-    await utils.sleep(1600)
+    await sleep(1600)
 
     setTimeout(() => {
       message.success('操作成功')
@@ -75,7 +75,7 @@ class Goods extends React.Component {
     const isUpdate = !!values.id
     console.log(isUpdate ? '编辑' : '新增', values)
 
-    await utils.sleep(1600)
+    await sleep(1600)
 
     // 模拟更新或新增假数据
     let dataSource
@@ -93,7 +93,7 @@ class Goods extends React.Component {
       dataSource = deepmerge([], this.state.dataSource)
       dataSource.push({
         ...values,
-        id: utils.random(0, 100),
+        id: random(0, 100),
         ies: values.ies[0]
       })
     }
@@ -109,7 +109,7 @@ class Goods extends React.Component {
     console.log('删除', id)
     const hide = message.loading('Action in progress..', 0)
 
-    await utils.sleep(1600)
+    await sleep(1600)
 
     // 模拟删除数据
     const { dataSource } = this.state
@@ -185,7 +185,7 @@ class Goods extends React.Component {
           label='场景'
           name='screen'
           data={screenDS}
-          initialValue={utils.getValue(screenDS, '普通场景')}
+          initialValue={getValue(screenDS, '普通场景')}
         />
         <Form.InputNumber
           label='环境照度'
