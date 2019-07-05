@@ -9,11 +9,12 @@
  * @Author: czy0729
  * @Date: 2019-06-26 09:42:44
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 16:47:42
+ * @Last Modified time: 2019-07-05 14:40:39
  */
 import React from 'react'
 import { Table as AntTable, Icon, Button, Input, DatePicker } from 'antd'
 import Highlighter from 'react-highlight-words'
+import styles from './index.less'
 
 const { Column } = AntTable
 const { RangePicker } = DatePicker
@@ -209,7 +210,13 @@ export default class Table extends React.Component {
   }
 
   render() {
-    const { dataSource, children, renderTop, ...otherTableProps } = this.props
+    const {
+      dataSource,
+      children,
+      renderTop,
+      renderBottom,
+      ...otherTableProps
+    } = this.props
     const columns = React.Children.map(children, ({ props }) => {
       const { sorter, filters, search, ...otherColumnProps } = props
       return (
@@ -224,16 +231,8 @@ export default class Table extends React.Component {
     })
 
     return (
-      <div>
-        {renderTop && (
-          <div
-            style={{
-              marginBottom: 16
-            }}
-          >
-            {renderTop}
-          </div>
-        )}
+      <div className={styles.table}>
+        {renderTop && <div className={styles.top}>{renderTop}</div>}
         <AntTable
           dataSource={dataSource}
           rowKey={(record, index) => index}
@@ -241,6 +240,7 @@ export default class Table extends React.Component {
         >
           {columns}
         </AntTable>
+        {renderBottom && <div className={styles.bottom}>{renderBottom}</div>}
       </div>
     )
   }

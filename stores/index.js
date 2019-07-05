@@ -2,73 +2,45 @@
  * @Author: czy0729
  * @Date: 2019-07-02 10:29:20
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 15:32:57
+ * @Last Modified time: 2019-07-04 15:20:41
  */
-import { observable } from 'mobx'
-import store from '@/utils/store'
+import { server } from '@/constants'
+import globalStore from './global'
+import uiStore from './ui'
+import userStore from './user'
 
-class GlobalStore extends store {
-  @observable state = {
-    categories: [
-      {
-        text: '灯具',
-        value: '灯具'
-      },
-      {
-        text: '灯饰',
-        value: '灯饰'
-      },
-      {
-        text: '光源',
-        value: '光源'
-      },
-      {
-        text: '家居',
-        value: '家居'
-      },
-      {
-        text: '办公',
-        value: '办公'
-      },
-      {
-        text: '商业',
-        value: '商业'
-      }
-    ]
-  }
-
+class Stores {
   /**
-   * 添加分类
+   * 保证所有子Store初始化和加载缓存
    */
-  addCategory = category => {
-    const { categories } = this.state
-    if (categories.findIndex(item => item.text === category) !== -1) {
-      return false
+  init = async () => Promise.all([userStore.init()])
+
+  // -------------------- page --------------------
+  /**
+   * 添加页面Store
+   * @param {*} key
+   * @param {*} store
+   */
+  add(key, store) {
+    if (!this[key]) {
+      this[key] = store
     }
-
-    const newCategories = [
-      ...this.state.categories,
-      {
-        text: category,
-        value: category
-      }
-    ]
-    this.setState({
-      categories: newCategories
-    })
-    return true
   }
 
   /**
-   * 更新分类
+   * 获取页面Store
+   * @param {*} key
    */
-  updateCategories = categories => {
-    this.setState({
-      categories
-    })
+  get(key) {
+    return this[key]
   }
 }
 
-const Store = new GlobalStore()
+export { globalStore, uiStore, userStore }
+export default new Stores()
 
-export default Store
+if (!server) {
+  setTimeout(() => {
+    window.Stores = { globalStore, uiStore, userStore }
+  }, 1000)
+}

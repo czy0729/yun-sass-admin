@@ -3,16 +3,15 @@
  * @Author: czy0729
  * @Date: 2019-06-25 15:44:16
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-02 17:27:15
+ * @Last Modified time: 2019-07-05 15:33:09
  */
 import React from 'react'
 import NextApp, { Container } from 'next/app'
-import { Provider } from 'mobx-react'
+import { Provider, observer } from 'mobx-react'
 import { LocaleProvider, Layout, Menu, Icon, Breadcrumb } from 'antd'
-import GlobalStore from '@/stores'
-import UIStore from '@/stores/ui'
-import { routerPush } from '@/utils'
-import { server, linkPrefix } from '@/constants'
+import Stores, { globalStore, uiStore, userStore } from '@/stores'
+import { getQuery, routerPush } from '@/utils'
+import { URL_LOGIN, server, linkPrefix } from '@/constants'
 import locale from '@/constants/locale'
 import '@/styles/reset.less'
 import '@/styles/global.less'
@@ -26,7 +25,14 @@ const config = [
   {
     icon: 'bulb',
     text: '试灯',
-    key: '/render'
+    key: '/'
+    // sub: [
+    //   {
+    //     text: '产品',
+    //     key: '/product',
+    //     hide: true
+    //   }
+    // ]
   },
   {
     icon: 'setting',
@@ -38,46 +44,49 @@ const config = [
         key: '/setting/basic'
       },
       {
-        text: '账号设置',
-        key: '/setting/account',
-        sub: [
-          {
-            text: '账号信息',
-            key: '/setting/account/info'
-          },
-          {
-            text: '修改密码',
-            key: '/setting/account/password'
-          },
-          {
-            text: '登陆日志',
-            key: '/setting/account/logs'
-          }
-        ]
+        text: '修改密码',
+        key: '/setting/account/password'
       }
     ]
   }
 ]
 const siderWidth = 112
 const store = {
-  GlobalStore,
-  UIStore
+  globalStore,
+  uiStore,
+  userStore
 }
 
-export default class App extends NextApp {
-  // SSR
-  // static async getInitialProps({ Component, ctx }) {
-  //   let pageProps = {};
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx);
-  //   }
-  //   return { pageProps };
-  // }
+export default
+@observer
+class App extends NextApp {
+  state = {
+    init: false
+  }
+
+  async componentDidMount() {
+    await Stores.init()
+    const token = getQuery('token')
+    if (!token && !userStore.isLogin) {
+      window.location = URL_LOGIN
+      return
+    }
+
+    if (token) {
+      userStore.updateToken(token)
+    }
+
+    this.setState({
+      init: true
+    })
+  }
 
   componentDidCatch() {}
 
   renderMenuItem(item) {
-    if (item.sub) {
+    const sub = (item.sub || []).filter(item => !item.hide)
+
+    if (sub.length) {
       return (
         <SubMenu
           key={item.key}
@@ -88,7 +97,7 @@ export default class App extends NextApp {
             </span>
           }
         >
-          {item.sub.map(item => this.renderMenuItem(item))}
+          {sub.map(item => this.renderMenuItem(item))}
         </SubMenu>
       )
     }
@@ -131,21 +140,25 @@ export default class App extends NextApp {
     const data = []
     let current = ''
     let sub
-    router.asPath
-      .replace(linkPrefix, '')
-      .split('/')
-      .filter(item => !!item)
-      .forEach(item => {
-        current += `/${item}`
-        const find = (sub || config).find(item => item.key === current)
-        if (find) {
-          data.push(find)
-          if (find.sub) {
-            // eslint-disable-next-line prefer-destructuring
-            sub = find.sub
+    if (router.asPath === '/') {
+      data.push(config[0])
+    } else {
+      router.asPath
+        .replace(linkPrefix, '')
+        .split('/')
+        .filter(item => !!item)
+        .forEach(item => {
+          current += `/${item}`
+          const find = (sub || config).find(item => item.key === current)
+          if (find) {
+            data.push(find)
+            if (find.sub) {
+              // eslint-disable-next-line prefer-destructuring
+              sub = find.sub
+            }
           }
-        }
-      })
+        })
+    }
 
     if (!data.length) {
       return null
@@ -161,7 +174,12 @@ export default class App extends NextApp {
   }
 
   render() {
+    if (!userStore.isLogin) {
+      return null
+    }
+
     const { Component, pageProps } = this.props
+    const { init } = this.state
     return (
       <Provider {...store}>
         <Layout>
@@ -177,7 +195,7 @@ export default class App extends NextApp {
                 <LocaleProvider locale={locale}>
                   <div>
                     {/* 实际页面 */}
-                    <Component {...pageProps} />
+                    {init && <Component {...pageProps} />}
                     <FormModal />
                   </div>
                 </LocaleProvider>

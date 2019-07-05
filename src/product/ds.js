@@ -2,11 +2,11 @@
  * @Author: czy0729
  * @Date: 2019-06-27 17:24:55
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 14:27:11
+ * @Last Modified time: 2019-07-04 17:36:10
  */
-export const screenDS = [
+export const sceneDS = [
   {
     text: '普通场景',
-    value: 'base'
+    value: '普通场景'
   }
 ]

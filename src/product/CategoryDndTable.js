@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-07-02 23:00:20
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 15:22:19
+ * @Last Modified time: 2019-07-05 21:56:08
  */
 import React from 'react'
 import classNames from 'classnames'
@@ -82,6 +82,7 @@ export default class CategoryDndTable extends React.Component {
       }
 
       return {
+        ...item,
         text: editingInputValue,
         value: editingInputValue
       }

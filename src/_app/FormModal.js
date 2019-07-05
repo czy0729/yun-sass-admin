@@ -10,7 +10,7 @@ import { Modal } from 'antd'
 import Form from '@/components/Form'
 import styles from './index.less'
 
-const FormModal = ({ form, UIStore }) => {
+const FormModal = ({ form, uiStore }) => {
   const {
     key,
     visible,
@@ -20,7 +20,7 @@ const FormModal = ({ form, UIStore }) => {
     children,
     onOk,
     onCancel
-  } = UIStore.state.formModal
+  } = uiStore.state.formModal
   return (
     <Modal
       key={key}
@@ -34,7 +34,7 @@ const FormModal = ({ form, UIStore }) => {
       onOk={e => form.onSubmit(onOk, e)}
       onCancel={() => {
         onCancel()
-        UIStore.closeFormModal()
+        uiStore.closeFormModal()
       }}
     >
       {React.Children.map(children, (item, index) => {
@@ -53,4 +53,4 @@ const FormModal = ({ form, UIStore }) => {
   )
 }
 
-export default inject('UIStore')(Form.create(observer(FormModal)))
+export default inject('uiStore')(Form.create(observer(FormModal)))

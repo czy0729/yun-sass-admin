@@ -4,7 +4,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 10:53:01
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 17:35:26
+ * @Last Modified time: 2019-07-05 14:51:12
  */
 import React from 'react'
 import classNames from 'classnames'
@@ -13,6 +13,7 @@ import Button from './Button'
 import Input from './Input'
 import InputNumber from './InputNumber'
 import Item from './Item'
+import Password from './Password'
 import Radio from './Radio'
 import Select from './Select'
 import Switch from './Switch'
@@ -28,12 +29,12 @@ const Form = ({ className, form, layout, children, ...other }) => {
     ? {
         labelCol: {
           xs: { span: 24 },
-          sm: { span: 6 }
+          sm: { span: 4 }
         },
         wrapperCol: {
           xs: { span: 24 },
           sm: {
-            span: 17,
+            span: 19,
             offset: 1
           }
         }
@@ -68,6 +69,7 @@ Form.Button = Button
 Form.Input = Input
 Form.InputNumber = InputNumber
 Form.Item = Item
+Form.Password = Password
 Form.Radio = Radio
 Form.Select = Select
 Form.Switch = Switch

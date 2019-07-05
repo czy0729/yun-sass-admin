@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-07-03 15:52:24
  */
 import { Modal } from 'antd'
-import UIStore from '@/stores/ui'
+import uiStore from '@/stores/ui'
 
 /**
  * https://ant.design/components/modal-cn/#components-modal-demo-confirm
@@ -25,7 +25,7 @@ export function showModal(arg) {
  * @param {*} arg
  */
 export function showFormModal(arg) {
-  UIStore.showFormModal(arg)
+  uiStore.showFormModal(arg)
 }
 
 /**
@@ -33,12 +33,12 @@ export function showFormModal(arg) {
  * @param {*} arg
  */
 export function closeFormModal() {
-  UIStore.closeFormModal()
+  uiStore.closeFormModal()
 }
 
 /**
  * 设置全局表单Modal confirmLoading
  */
 export function setFormModalLoading() {
-  UIStore.setFormModalLoading()
+  uiStore.setFormModalLoading()
 }

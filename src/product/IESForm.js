@@ -2,34 +2,43 @@
  * @Author: czy0729
  * @Date: 2019-06-28 16:07:03
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 16:49:52
+ * @Last Modified time: 2019-07-05 23:41:59
  */
 import React from 'react'
 import Form from '@/components/Form'
 
-function IESForm({ form, ies, angle, lm, cct }) {
+function IESForm({ form, ies, beam_angle: beamAngle, flux, cct, power }) {
   return (
     <Form form={form}>
       <Form.UploadFile
         label='IES'
         name='ies'
         rules={Form.rules.required}
-        initialValue={ies ? [ies] : undefined}
+        initialValue={ies}
       />
       <Form.Input
         label='光束角'
-        name='angle'
+        name='beam_angle'
         rules={Form.rules.required}
-        initialValue={angle}
+        initialValue={beamAngle}
+      />
+      <Form.InputNumber
+        label='功率'
+        name='power'
+        rules={Form.rules.required}
+        initialValue={power}
+        max={10000}
+        placeholder='0-10000'
+        right='W'
       />
       <Form.InputNumber
         label='光通量'
-        name='lm'
+        name='flux'
         rules={Form.rules.required}
-        initialValue={lm}
+        initialValue={flux}
         max={50000}
         placeholder='0-50000'
-        right='lm'
+        right='lux'
       />
       <Form.InputNumber
         label='色温'

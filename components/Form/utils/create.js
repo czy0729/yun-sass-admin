@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 11:51:06
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 12:20:44
+ * @Last Modified time: 2019-07-05 10:47:21
  */
 import React from 'react'
 import { Form } from 'antd'
@@ -25,8 +25,12 @@ const onValidate = (form, next = Function.prototype, e) => {
         return reject()
       }
 
-      const data = await onOk(values, next)
-      return resolve(data)
+      try {
+        const data = await onOk(values, next)
+        return resolve(data)
+      } catch (error) {
+        return reject(error)
+      }
     })
   )
 }

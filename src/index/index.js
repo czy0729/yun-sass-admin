@@ -2,23 +2,32 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-04 09:48:31
+ * @Last Modified time: 2019-07-05 17:26:55
  */
 import React from 'react'
+import { observer, inject } from 'mobx-react'
 import deepmerge from 'deepmerge'
 import { Badge, Divider, Popconfirm, Button, Modal, message } from 'antd'
 import Table from '@/components/Table'
-import { routerPush, getText, getStatus, date } from '@/utils'
+import { routerPush, getText, getStatus } from '@/utils'
 import { dataSource } from '@/mock'
-import { recommendDS } from './ds'
+import { activeDS, recommendDS } from './ds'
 
 const { Column } = Table
 
-export default class Render extends React.Component {
+export default
+@inject('globalStore')
+@observer
+class Render extends React.Component {
   state = {
     dataSource,
     selectedRowKeys: [],
     selectedRowIds: []
+  }
+
+  componentDidMount() {
+    const { globalStore } = this.props
+    globalStore.fetchProductList()
   }
 
   onSelectChange = (selectedRowKeys, record) => {
@@ -61,7 +70,7 @@ export default class Render extends React.Component {
     const { selectedRowIds } = this.state
     return (
       <>
-        <Button type='primary' onClick={() => routerPush('/render/goods')}>
+        <Button type='primary' onClick={() => routerPush('/product')}>
           添加产品
         </Button>
         <Button
@@ -70,7 +79,15 @@ export default class Render extends React.Component {
           disabled={!selectedRowIds.length}
           onClick={this.confirmBatchDelete}
         >
-          批量删除
+          下线
+        </Button>
+        <Button
+          className='ml-sm'
+          type='danger'
+          disabled={!selectedRowIds.length}
+          onClick={this.confirmBatchDelete}
+        >
+          删除
         </Button>
       </>
     )
@@ -81,7 +98,7 @@ export default class Render extends React.Component {
       <div>
         <a>浏览</a>
         <Divider type='vertical' />
-        <a onClick={() => routerPush(`/render/goods?id=${value.id}`)}>编辑</a>
+        <a onClick={() => routerPush(`/product?id=${value}`)}>编辑</a>
         <Divider type='vertical' />
         <Popconfirm title='确定删除?' onConfirm={() => this.doDelete([value])}>
           <a>删除</a>
@@ -93,7 +110,9 @@ export default class Render extends React.Component {
   }
 
   render() {
-    const { dataSource, selectedRowKeys } = this.state
+    const { globalStore } = this.props
+    const { productList } = globalStore.state
+    const { selectedRowIds, selectedRowKeys } = this.state
     const rowSelection = {
       selectedRowKeys,
       onChange: this.onSelectChange
@@ -101,25 +120,59 @@ export default class Render extends React.Component {
 
     return (
       <Table
-        dataSource={dataSource}
-        scroll={{ x: 1280 }}
+        dataSource={productList.list.slice()}
+        loading={!productList._loaded}
+        scroll={{ x: 1440 }}
         rowSelection={rowSelection}
-        renderTop={this.renderTop()}
+        renderTop={
+          <Button type='primary' onClick={() => routerPush('/product')}>
+            添加产品
+          </Button>
+        }
+        renderBottom={
+          <div>
+            <Button
+              type='danger'
+              disabled={!selectedRowIds.length}
+              onClick={this.confirmBatchDelete}
+            >
+              下线
+            </Button>
+            <Button
+              className='ml-sm'
+              type='danger'
+              disabled={!selectedRowIds.length}
+              onClick={this.confirmBatchDelete}
+            >
+              删除
+            </Button>
+          </div>
+        }
         onChange={this.onChange}
       >
+        <Column title='名称' dataIndex='name' sorter search />
         <Column
-          title='Id'
-          dataIndex='id'
+          title='IES'
+          dataIndex='models'
           sorter
           search
-          fixed='left'
-          width={80}
+          render={value => value.length}
         />
-        <Column title='名称' dataIndex='name' sorter search />
-        <Column title='IES' dataIndex='iesCount' sorter search />
         <Column title='PV' dataIndex='pv' sorter search />
         <Column title='UV' dataIndex='uv' sorter search />
         <Column title='排序' dataIndex='sort' sorter search />
+        <Column
+          title='状态'
+          dataIndex='active'
+          sorter
+          filters={activeDS}
+          render={value => (
+            <>
+              <Badge status={getStatus(activeDS, value)} />
+              {getText(activeDS, value)}
+            </>
+          )}
+        />
         <Column
           title='推荐'
           dataIndex='recommend'
@@ -134,10 +187,9 @@ export default class Render extends React.Component {
         />
         <Column
           title='修改时间'
-          dataIndex='lastDate'
+          dataIndex='update_time'
           sorter
           filters='date'
-          render={value => date('y-m-d H:i:s', value)}
         />
         <Column
           title='操作'

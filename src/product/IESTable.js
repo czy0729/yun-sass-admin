@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-29 11:07:15
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-29 14:59:59
+ * @Last Modified time: 2019-07-05 23:28:45
  */
 import React from 'react'
 import { Table, Divider, Popconfirm, Icon } from 'antd'
@@ -13,7 +13,8 @@ function IESTable({ dataSource, onShowIESForm, onDeleteIES }) {
     <Table
       className={styles.table}
       size='small'
-      rowKey={record => record.id}
+      rowKey={record => record.beam_angle}
+      scroll={{ x: 640 }}
       columns={[
         {
           title: 'IES',
@@ -22,40 +23,44 @@ function IESTable({ dataSource, onShowIESForm, onDeleteIES }) {
             <span>
               <Icon type='paper-clip' />
               <a
-                href={value.url}
+                href={value}
                 target='_blank'
                 rel='noopener noreferrer'
                 style={{ marginLeft: 4 }}
               >
-                {value.name}
+                {value}
               </a>
             </span>
           )
         },
         {
           title: '光束角',
-          dataIndex: 'angle'
+          dataIndex: 'beam_angle'
         },
         {
-          title: '光通量',
-          dataIndex: 'lm',
-          render: value => `${value} lm`
+          title: '功率(W)',
+          dataIndex: 'power'
         },
         {
-          title: '色温',
-          dataIndex: 'cct',
-          render: value => `${value} K`
+          title: '光通量(lux)',
+          dataIndex: 'flux'
+        },
+        {
+          title: '色温(K)',
+          dataIndex: 'cct'
         },
         {
           title: '操作',
           dataIndex: 'id',
-          render: (value, item) => (
+          fixed: 'right',
+          width: 120,
+          render: (value, item, index) => (
             <div>
-              <a onClick={() => onShowIESForm(item)}>编辑</a>
+              <a onClick={() => onShowIESForm(item, index)}>编辑</a>
               <Divider type='vertical' />
               <Popconfirm
                 title='确定删除?'
-                onConfirm={() => onDeleteIES(value)}
+                onConfirm={() => onDeleteIES(index)}
               >
                 <a>删除</a>
               </Popconfirm>

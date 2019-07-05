@@ -2,10 +2,10 @@
  * @Author: czy0729
  * @Date: 2019-06-27 14:45:31
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 17:08:51
+ * @Last Modified time: 2019-07-05 10:51:49
  */
 import React, { useState } from 'react'
-import { Button as AntButton } from 'antd'
+import { Button as AntButton, Modal } from 'antd'
 import Item from './Item'
 
 const tailFormItemLayout = {
@@ -15,8 +15,8 @@ const tailFormItemLayout = {
       offset: 0
     },
     sm: {
-      span: 17,
-      offset: 7
+      span: 19,
+      offset: 5
     }
   }
 }
@@ -32,8 +32,11 @@ const Button = ({ className, children, form, onSubmit, ...other }) => {
           setLoading(true)
           try {
             await form.onSubmit(onSubmit, e)
-          } catch (e) {
-            // do nothing
+          } catch (ex) {
+            Modal.error({
+              title: '操作失败',
+              content: ex
+            })
           } finally {
             setLoading(false)
           }

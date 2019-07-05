@@ -2,10 +2,10 @@
  * @Author: czy0729
  * @Date: 2019-07-02 10:30:11
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-02 11:14:47
+ * @Last Modified time: 2019-07-04 15:29:00
  */
 import { configure, extendObservable, action, toJS } from 'mobx'
-import { getTimestamp } from '@/utils'
+import { getTimestamp, setStorage, getStorage } from '@/utils'
 import { LIST_EMPTY } from '@/constants'
 
 configure({ enforceActions: 'observed' })
@@ -104,24 +104,24 @@ export default class Common {
    * @param {*} namesapce 空间名其实一定要传递的, 不能依赖this.getName, 打包后会丢失
    */
   setStorage(key, value, namesapce) {
-    // if (!key) {
-    //   return setStorage(`${namesapce}|state`, JSON.stringify(this.state))
-    // }
-    // return setStorage(
-    //   `${namesapce}|${key}|state`,
-    //   JSON.stringify(value || this.state[key])
-    // )
+    if (!key) {
+      return setStorage(`${namesapce}|state`, JSON.stringify(this.state))
+    }
+    return setStorage(
+      `${namesapce}|${key}|state`,
+      JSON.stringify(value || this.state[key])
+    )
   }
 
   /**
    * AsyncStorage.getItem
    * @param {*} key
    */
-  async getStorage(key, namesapce) {
-    // if (!key) {
-    //   return JSON.parse(await getStorage(`${namesapce}|state`))
-    // }
-    // return JSON.parse(await getStorage(`${namesapce}|${key}|state`))
+  getStorage(key, namesapce) {
+    if (!key) {
+      return getStorage(`${namesapce}|state`)
+    }
+    return getStorage(`${namesapce}|${key}|state`)
   }
 
   /**

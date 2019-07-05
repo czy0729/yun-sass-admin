@@ -12,6 +12,7 @@
     "clipboard": "^2.0.4",
     "deepmerge": "^3.3.0",
     "immutability-helper": "^3.0.1",
+    "isomorphic-unfetch": "^3.0.0",
     "less": "^3.9.0",
     "mobx": "4",
     "mobx-react": "5",

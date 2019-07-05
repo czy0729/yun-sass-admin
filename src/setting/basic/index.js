@@ -11,7 +11,7 @@ import { Divider, message } from 'antd'
 import { Form } from '@/components'
 
 export default
-@inject('GlobalStore', 'UIStore')
+@inject('globalStore', 'uiStore')
 @Form.create
 @observer
 class Basic extends React.Component {
@@ -31,8 +31,8 @@ class Basic extends React.Component {
   }
 
   showUpdateWebsite = value => {
-    const { UIStore } = this.props
-    UIStore.showFormModal({
+    const { uiStore } = this.props
+    uiStore.showFormModal({
       title: '个性化域名',
       children: (
         <Form>

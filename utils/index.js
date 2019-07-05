@@ -2,10 +2,10 @@
  * @Author: czy0729
  * @Date: 2019-06-21 11:50:38
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-04 09:55:59
+ * @Last Modified time: 2019-07-05 22:05:05
  */
 import Router from 'next/router'
-import { linkPrefix } from '@/constants'
+import { server, linkPrefix } from '@/constants'
 
 /**
  * [*]Router.push
@@ -13,6 +13,37 @@ import { linkPrefix } from '@/constants'
  */
 export function routerPush(path) {
   Router.push(path, `${linkPrefix}${path}`)
+}
+
+/**
+ * [*]获取query
+ * @param {String} *name
+ */
+export function getQuery(name) {
+  if (server) {
+    return null
+  }
+
+  const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i')
+  const r = window.location.search.substr(1).match(reg)
+  if (r != null) {
+    return unescape(r[2])
+  }
+  return null
+}
+
+/**
+ * url字符串化
+ * @param {*} data
+ * @param {*} encode
+ */
+export function urlStringify(data, encode = true) {
+  if (!data) return ''
+
+  const arr = Object.keys(data).map(
+    key => `${key}=${encode ? encodeURIComponent(data[key]) : data[key]}`
+  )
+  return arr.join('&')
 }
 
 /**
@@ -341,4 +372,61 @@ export function getStatus(ds, text) {
   }
 
   return 'default'
+}
+
+/**
+ * localStorage set
+ * @version 190704 1.0
+ * @param {String} key
+ * @param {Mix}    data
+ */
+export function setStorage(key, data) {
+  if (typeof window.localStorage === 'undefined') {
+    return false
+  }
+
+  try {
+    const value = typeof data === 'string' ? data : JSON.stringify(data)
+
+    window.localStorage.setItem(key, value)
+    return true
+  } catch (err) {
+    console.log('localStorage set fail: ', key)
+    return false
+  }
+}
+
+/**
+ * localStorage get
+ * @version 190704 1.0
+ * @param {String} key
+ */
+export function getStorage(key) {
+  let data = null
+
+  if (typeof window.localStorage === 'undefined') {
+    return data
+  }
+
+  try {
+    data = JSON.parse(window.localStorage.getItem(key))
+  } catch (err) {
+    console.log('localStorage get fail: ', key)
+    return null
+  }
+
+  return data
+}
+
+/**
+ * 获取文件Base64
+ * @param {*} file
+ */
+export function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new window.FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => resolve(reader.result)
+    reader.onerror = error => reject(error)
+  })
 }

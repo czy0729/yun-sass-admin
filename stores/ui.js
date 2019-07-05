@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-07-02 15:26:36
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 15:55:27
+ * @Last Modified time: 2019-07-04 14:27:43
  */
 import { observable } from 'mobx'
 import { getTimestamp } from '@/utils'
@@ -57,6 +57,4 @@ class UIStore extends store {
   }
 }
 
-const Store = new UIStore()
-
-export default Store
+export default new UIStore()
