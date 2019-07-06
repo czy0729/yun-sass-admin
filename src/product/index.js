@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 23:35:53
+ * @Last Modified time: 2019-07-06 09:23:16
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
@@ -24,10 +24,8 @@ export default
 class Goods extends React.Component {
   state = {
     id: '',
-    product: {
-      models: []
-    },
-    dataSource: [
+    product: {},
+    models: [
       // {
       //   ies: 'https://litku.oss-cn-beijing.aliyuncs.com/ies/ieses/24D_3.dat',
       //   beam_angle: 'ies_24D',
@@ -53,7 +51,8 @@ class Goods extends React.Component {
       })
       if (data.state === 1) {
         this.setState({
-          product: data.content
+          product: data.content,
+          models: data.content.models || []
         })
       }
     }
@@ -81,37 +80,37 @@ class Goods extends React.Component {
 
   onEditIES = async (values, index) => {
     const isUpdate = index !== undefined
-    let dataSource
+    let models
     if (isUpdate) {
-      dataSource = deepmerge([], this.state.dataSource).map((item, idx) => {
+      models = deepmerge([], this.state.models).map((item, idx) => {
         if (index === idx) {
           return values
         }
         return item
       })
     } else {
-      dataSource = deepmerge([], this.state.dataSource)
-      dataSource.push(values)
+      models = deepmerge([], this.state.models)
+      models.push(values)
     }
     this.setState({
-      dataSource
+      models
     })
   }
 
   onDeleteIES = async index => {
-    const { dataSource } = this.state
+    const { models } = this.state
     this.setState({
-      dataSource: deepmerge([], dataSource).filter((item, idx) => index !== idx)
+      models: deepmerge([], models).filter((item, idx) => index !== idx)
     })
   }
 
   onSubmit = async values => {
     const { globalStore } = this.props
-    const { id, dataSource } = this.state
+    const { id, models } = this.state
     await globalStore.doProductCommit({
       ...values,
       id,
-      models: JSON.stringify(dataSource),
+      models: JSON.stringify(models),
       state: 1,
       active: 1,
       ies_status: 1,
@@ -138,7 +137,7 @@ class Goods extends React.Component {
   render() {
     const { form, globalStore } = this.props
     const { categories } = globalStore.state
-    const { id, product, dataSource } = this.state
+    const { id, product, models } = this.state
     return (
       <Form form={form}>
         <Form.Input
@@ -174,7 +173,7 @@ class Goods extends React.Component {
         />
         <Form.Item label='产品IES' required>
           <IESTable
-            dataSource={product.models.slice()}
+            dataSource={models.slice()}
             onShowIESForm={this.showIESForm}
             onDeleteIES={this.onDeleteIES}
           />

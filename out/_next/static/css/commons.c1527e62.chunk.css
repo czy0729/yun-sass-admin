@@ -1,0 +1,57 @@
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-27 14:16:55
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-04 17:27:52
+ */
+.form__klal {
+  max-width: 960px;
+}
+.right__37RA {
+  position: absolute;
+  right: 0;
+  margin-right: -12px;
+  transform: translate(100%, -100%);
+}
+.input__pCiM {
+  max-width: 400px;
+}
+.select__1ls1 {
+  max-width: 400px;
+}
+.text__29IW {
+  margin-bottom: 0;
+  color: #0d1a26;
+  font-weight: 500;
+}
+.upload__JIV_ .has-error .c-upload .ant-upload-select {
+  border: 1px solid #f5222d;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-29 15:03:03
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-07-04 09:41:08
+ */
+.c-upload__oiYo .ant-upload-list-picture-card .ant-upload-list-item,
+.c-upload__oiYo .ant-upload.ant-upload-select-picture-card {
+  width: 120px;
+  height: 120px;
+}
+.c-upload__oiYo .ant-upload-list-item-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+ * @Author: czy0729
+ * @Date: 2019-06-29 15:03:03
+ * @Last Modified by: czy0729
+ * @Last Modified time: 2019-06-29 15:10:15
+ */
+.has-error .c-upload-file .ant-upload-select .ant-btn {
+  border-color: #f5222d;
+}
+
