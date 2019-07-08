@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-21 11:50:38
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 22:05:05
+ * @Last Modified time: 2019-07-06 16:54:28
  */
 import Router from 'next/router'
 import { server, linkPrefix } from '@/constants'
@@ -13,6 +13,13 @@ import { server, linkPrefix } from '@/constants'
  */
 export function routerPush(path) {
   Router.push(path, `${linkPrefix}${path}`)
+}
+
+/**
+ * [*]Router.back
+ */
+export function routerBack() {
+  Router.back()
 }
 
 /**

@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-07-04 14:22:47
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 17:48:39
+ * @Last Modified time: 2019-07-06 14:09:58
  */
 import { observable } from 'mobx'
 import { getTimestamp } from '@/utils'
@@ -57,7 +57,7 @@ class GlobalStore extends store {
       this.setState({
         categories: data.content.map(item => ({
           text: item.name,
-          value: item.name,
+          value: item.id,
           ...item
         }))
       })

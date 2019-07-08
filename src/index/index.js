@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 17:26:55
+ * @Last Modified time: 2019-07-06 15:40:06
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
@@ -96,7 +96,13 @@ class Render extends React.Component {
   renderControl(value) {
     return (
       <div>
-        <a>浏览</a>
+        <a
+          href={`http://localhost:3000/render?pid=${value}`}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          浏览
+        </a>
         <Divider type='vertical' />
         <a onClick={() => routerPush(`/product?id=${value}`)}>编辑</a>
         <Divider type='vertical' />
@@ -150,7 +156,7 @@ class Render extends React.Component {
         }
         onChange={this.onChange}
       >
-        <Column title='名称' dataIndex='name' sorter search />
+        <Column title='名称' dataIndex='name' sorter search width={320} />
         <Column
           title='IES'
           dataIndex='models'

@@ -2,12 +2,13 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:22:01
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-06-26 20:09:48
+ * @Last Modified time: 2019-07-08 10:24:32
  */
 const withLess = require('@zeit/next-less')
 
 const isProduction = process.env.NODE_ENV === 'production'
-const prefix = '/yun-sass-admin/out'
+// const prefix = '/yun-sass-admin/out'
+const prefix = ''
 const config = {
   assetPrefix: isProduction ? prefix : '',
   publicRuntimeConfig: {

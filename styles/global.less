@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-26 14:25:36
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-03 17:05:37
+ * @Last Modified time: 2019-07-06 14:06:13
  */
 @sm: 12px;
 @md: 24px;
@@ -16,5 +16,19 @@
   }
   a[disabled] {
     cursor: not-allowed;
+  }
+  .t-c1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .t-c2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 }

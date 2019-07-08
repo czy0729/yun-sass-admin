@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-28 16:07:03
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 23:41:59
+ * @Last Modified time: 2019-07-06 16:57:17
  */
 import React from 'react'
 import Form from '@/components/Form'
@@ -38,7 +38,7 @@ function IESForm({ form, ies, beam_angle: beamAngle, flux, cct, power }) {
         initialValue={flux}
         max={50000}
         placeholder='0-50000'
-        right='lux'
+        right='lm'
       />
       <Form.InputNumber
         label='色温'

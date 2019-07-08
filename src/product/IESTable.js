@@ -2,10 +2,10 @@
  * @Author: czy0729
  * @Date: 2019-06-29 11:07:15
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 23:28:45
+ * @Last Modified time: 2019-07-06 16:57:24
  */
 import React from 'react'
-import { Table, Divider, Popconfirm, Icon } from 'antd'
+import { Table, Divider, Popconfirm } from 'antd'
 import styles from './index.less'
 
 function IESTable({ dataSource, onShowIESForm, onDeleteIES }) {
@@ -19,19 +19,23 @@ function IESTable({ dataSource, onShowIESForm, onDeleteIES }) {
         {
           title: 'IES',
           dataIndex: 'ies',
-          render: value => (
-            <span>
-              <Icon type='paper-clip' />
+          render: value => {
+            if (!value) {
+              return null
+            }
+            return (
               <a
-                href={value}
+                className='t-c2'
+                href={value[0]}
                 target='_blank'
                 rel='noopener noreferrer'
+                title={value[0]}
                 style={{ marginLeft: 4 }}
               >
-                {value}
+                {value[0]}
               </a>
-            </span>
-          )
+            )
+          }
         },
         {
           title: '光束角',
@@ -42,7 +46,7 @@ function IESTable({ dataSource, onShowIESForm, onDeleteIES }) {
           dataIndex: 'power'
         },
         {
-          title: '光通量(lux)',
+          title: '光通量(lm)',
           dataIndex: 'flux'
         },
         {

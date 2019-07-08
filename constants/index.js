@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-27 10:35:14
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-06 09:26:20
+ * @Last Modified time: 2019-07-06 09:48:27
  */
 import getConfig from 'next-server/config'
 
@@ -11,8 +11,9 @@ export const server = typeof window === 'undefined'
 const { publicRuntimeConfig } = getConfig()
 export const { linkPrefix } = publicRuntimeConfig
 
-export const URL_LOGIN =
-  'http://ms.litku.yzess.cn/login?forward=https://czy0729.github.io/yun-sass-admin/out/'
+export const URL_LOGIN = server
+  ? ''
+  : `http://ms.litku.yzess.cn/login?forward=${window.location.href}?f=1`
 export const URL_API_HOST = 'http://api.sdb.yzess.cn'
 export const URL_UPLOAD_SIGN = 'http://api.sdb.yzess.cn/upload/sign'
 export const URL_UPLOAD_VERIFY = 'http://api.sdb.yzess.cn/upload/verify'

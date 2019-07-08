@@ -2,14 +2,14 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-06 09:23:16
+ * @Last Modified time: 2019-07-06 16:59:16
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import deepmerge from 'deepmerge'
 import { message } from 'antd'
 import Form from '@/components/Form'
-import { getValue, getQuery } from '@/utils'
+import { getValue, getQuery, routerBack } from '@/utils'
 import fetch from '@/utils/fetch'
 import { API_PRODUCT_ITEM } from '@/constants/api'
 import IESTable from './IESTable'
@@ -116,7 +116,11 @@ class Goods extends React.Component {
       ies_status: 1,
       recommend: values.recommend ? 1 : 0
     })
+
     message.success('操作成功')
+    if (!id) {
+      routerBack()
+    }
   }
 
   renderLink() {

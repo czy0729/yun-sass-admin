@@ -3,7 +3,7 @@
  * @Author: czy0729
  * @Date: 2019-06-25 15:44:16
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 15:33:09
+ * @Last Modified time: 2019-07-06 09:48:30
  */
 import React from 'react'
 import NextApp, { Container } from 'next/app'
@@ -67,7 +67,7 @@ class App extends NextApp {
   async componentDidMount() {
     await Stores.init()
     const token = getQuery('token')
-    if (!token && !userStore.isLogin) {
+    if (!token && !userStore.isLogin && !getQuery('f')) {
       window.location = URL_LOGIN
       return
     }
