@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "next -- -p 3001",
+    "dev": "next -- -p 3002",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
     "export": "next export"

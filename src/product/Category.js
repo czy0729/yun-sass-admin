@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-07-02 15:11:42
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 21:58:42
+ * @Last Modified time: 2019-07-08 11:30:02
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
@@ -24,6 +24,7 @@ class Category extends React.Component {
             label='分类名称'
             name='name'
             rules={Form.rules.required}
+            autoFocus
           />
         </Form>
       ),
@@ -75,7 +76,7 @@ class Category extends React.Component {
               name: item.text,
               state: item.state,
               active: item.active,
-              sort: index
+              sort: categories.length - index
             }))
           )
         })

@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-29 11:07:15
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-06 16:57:24
+ * @Last Modified time: 2019-07-08 11:51:03
  */
 import React from 'react'
 import { Table, Divider, Popconfirm } from 'antd'
@@ -26,13 +26,13 @@ function IESTable({ dataSource, onShowIESForm, onDeleteIES }) {
             return (
               <a
                 className='t-c2'
-                href={value[0]}
+                href={value}
                 target='_blank'
                 rel='noopener noreferrer'
-                title={value[0]}
+                title={value}
                 style={{ marginLeft: 4 }}
               >
-                {value[0]}
+                {value}
               </a>
             )
           }

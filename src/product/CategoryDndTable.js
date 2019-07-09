@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-07-02 23:00:20
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-05 21:56:08
+ * @Last Modified time: 2019-07-08 11:25:17
  */
 import React from 'react'
 import classNames from 'classnames'
@@ -28,6 +28,8 @@ export default class CategoryDndTable extends React.Component {
     editingFormItemProps: initEditingFormItemProps
   }
 
+  Input
+
   components = {
     body: {
       row: DragableBodyRow
@@ -51,6 +53,10 @@ export default class CategoryDndTable extends React.Component {
       editingCategory,
       editingInputValue
     })
+
+    if (editingCategory) {
+      setTimeout(() => this.Input.select())
+    }
   }
 
   onInputChange = e => {
@@ -147,7 +153,11 @@ export default class CategoryDndTable extends React.Component {
                 return (
                   <Form.Item {...editingFormItemProps}>
                     <Input
+                      ref={node => {
+                        this.Input = node
+                      }}
                       value={editingInputValue}
+                      onBlur={this.save}
                       onChange={this.onInputChange}
                     />
                   </Form.Item>

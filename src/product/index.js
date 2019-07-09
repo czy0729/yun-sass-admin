@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-06 16:59:16
+ * @Last Modified time: 2019-07-08 12:02:15
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
@@ -84,13 +84,19 @@ class Goods extends React.Component {
     if (isUpdate) {
       models = deepmerge([], this.state.models).map((item, idx) => {
         if (index === idx) {
-          return values
+          return {
+            ...values,
+            ies: values.ies[0]
+          }
         }
         return item
       })
     } else {
       models = deepmerge([], this.state.models)
-      models.push(values)
+      models.push({
+        ...values,
+        ies: values.ies[0]
+      })
     }
     this.setState({
       models
@@ -150,6 +156,7 @@ class Goods extends React.Component {
           initialValue={product.name}
           rules={Form.rules.required}
           placeholder='最多60个字'
+          autoFocus
         />
         <Form.Select
           label='产品分类'

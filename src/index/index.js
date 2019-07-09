@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-21 10:12:32
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-06 15:40:06
+ * @Last Modified time: 2019-07-08 12:28:52
  */
 import React from 'react'
 import { observer, inject } from 'mobx-react'
@@ -156,22 +156,33 @@ class Render extends React.Component {
         }
         onChange={this.onChange}
       >
-        <Column title='名称' dataIndex='name' sorter search width={320} />
+        <Column
+          title='名称'
+          dataIndex='name'
+          // sorter
+          // search
+          width={320}
+        />
         <Column
           title='IES'
           dataIndex='models'
-          sorter
-          search
+          // sorter
+          // search
           render={value => value.length}
         />
-        <Column title='PV' dataIndex='pv' sorter search />
-        <Column title='UV' dataIndex='uv' sorter search />
-        <Column title='排序' dataIndex='sort' sorter search />
+        {/* <Column title='PV' dataIndex='pv' sorter search />
+        <Column title='UV' dataIndex='uv' sorter search /> */}
+        <Column
+          title='排序'
+          dataIndex='sort'
+          sorter
+          // search
+        />
         <Column
           title='状态'
           dataIndex='active'
-          sorter
-          filters={activeDS}
+          // sorter
+          // filters={activeDS}
           render={value => (
             <>
               <Badge status={getStatus(activeDS, value)} />
@@ -182,8 +193,8 @@ class Render extends React.Component {
         <Column
           title='推荐'
           dataIndex='recommend'
-          sorter
-          filters={recommendDS}
+          // sorter
+          // filters={recommendDS}
           render={value => (
             <>
               <Badge status={getStatus(recommendDS, value)} />
@@ -194,8 +205,8 @@ class Render extends React.Component {
         <Column
           title='修改时间'
           dataIndex='update_time'
-          sorter
-          filters='date'
+          // sorter
+          // filters='date'
         />
         <Column
           title='操作'

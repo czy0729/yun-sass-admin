@@ -2,7 +2,7 @@
  * @Author: czy0729
  * @Date: 2019-06-28 16:07:03
  * @Last Modified by: czy0729
- * @Last Modified time: 2019-07-06 16:57:17
+ * @Last Modified time: 2019-07-08 11:51:15
  */
 import React from 'react'
 import Form from '@/components/Form'
@@ -14,7 +14,7 @@ function IESForm({ form, ies, beam_angle: beamAngle, flux, cct, power }) {
         label='IES'
         name='ies'
         rules={Form.rules.required}
-        initialValue={ies}
+        initialValue={typeof ies === 'string' ? [ies] : ies}
       />
       <Form.Input
         label='光束角'
